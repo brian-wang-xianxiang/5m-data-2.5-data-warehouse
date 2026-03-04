@@ -1,0 +1,9 @@
+
+# yaml for specification of sources for the austin_bikeshare_demo project
+version: 2
+
+sources:
+  - name: austin_bikeshare
+    database: bigquery-public-data
+    tables:
+      - name: bikeshare_trips

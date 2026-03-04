@@ -1,0 +1,30 @@
+# schema of the austin_bikeshare_demo project
+version: 2
+
+models:
+  - name: fact_bikeshare_trips
+    description: "Fact table of the bikeshare trips"
+    columns:
+      - name: trip_id
+        description: "Unique identifier for each trip"
+        tests:
+          - unique
+          - not null
+      - name: subscriber_type
+        description: "Type of subscriber (e.g., Subscriber, Customer)"
+      - name: bike_id
+        description: "Identifier for the bike used in the trip"
+      - name: bike_type
+        description: "Type of bike used in the trip"
+      - name: start_time
+        description: "Start time of the trip"
+      - name: start_station_id
+        description: "Identifier for the station where the trip started"
+      - name: start_station_name
+        description: "Name of the station where the trip started"
+      - name: end_station_id
+        description: "Identifier for the station where the trip ended"
+      - name: end_station_name
+        description: "Name of the station where the trip ended"
+      - name: duration_minutes
+        description: "Duration of the trip in minutes"

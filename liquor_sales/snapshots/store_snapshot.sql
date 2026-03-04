@@ -9,6 +9,7 @@
   )
 }}
 
+-- chatgpt comments this as an over-engineered solution.
 WITH 
 store AS (
     SELECT
@@ -34,6 +35,7 @@ grouped_data AS (
         county,
         FIRST_VALUE(date) OVER (PARTITION BY store_number, store_name, address, city, zip_code, county_number, county ORDER BY date) start_date,
         LAST_VALUE(date) OVER (PARTITION BY store_number, store_name, address, city, zip_code, county_number, county ORDER BY date) end_date,
+            -- ORDER BY date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) end_date,
     FROM
         store
     QUALIFY RANK() OVER (PARTITION BY store_number, store_name, address, city, zip_code, county_number, county ORDER BY date) = 1
@@ -54,3 +56,10 @@ FROM
 ORDER BY store_number, start_at, end_at
 
 {% endsnapshot %}
+
+
+-- the group_data CTE can be implemente using a min/max aggregation groupby?
+-- SELECT store_number, store_name, address, city, zip_code, county_number, county,
+--    MIN(date) AS start_date, MAX(date) AS end_date
+-- FROM store
+-- GROUP BY store_number, store_name, address, city, zip_code, county_number, county;

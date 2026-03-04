@@ -85,7 +85,7 @@ dbt test
 
 Observe the test results. There should be 1 failing test for the `dim_item` table.
 
-#### Practice
+#### Practice [TODO]
 
 > 1. Implement a snapshot for the `item` dimension table. Then update the `dim_item` model to use the snapshot.
 > 2. Add a test for the `item_number` foreign key in the `fact_sales` table. The test should check if the `item_number` exists in the `dim_item` table.
